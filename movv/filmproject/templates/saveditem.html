@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+      film....
+{% endblock %}
+{% block content %}
+{% if not cart_items %}
+
+<div>
+    <div class="text-center">
+        <br>
+        <h1 class="text-center my_title">
+            Your saved list is empty
+        </h1>
+        <br>
+        <p class="text-center">
+            Please Click <a href="{% url 'filmapp:allfilmCat' %}">Here</a>to go back to home
+
+        </p>
+
+
+
+
+
+
+
+{% else %}
+<div>
+    <div class="text-center">
+        <br>
+        <h1 class="text-center my_title">
+            Your Saved items
+        </h1>
+        <br>
+        </div>
+        <div class="row mx-auto container">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+
+                <table class="table my_custom_table">
+                    <thead class="my_custom_thead">
+                    <tr>
+                        <th colspan="5">
+                            Your list of movies
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cart_item in cart_items %}
+                    <tr>
+                        <td>
+                            <a href="{{Product.get_url}}"><img src="{{cart_item.Product.image.url}}" alt="" width="200" height="200" class="float-left rounded custom_image"></a>
+                        </td>
+                        <td class="text-left">
+                            <h4>{{cart_item.Product.name}}</h4>
+                            <br>
+                            Actors: {{cart_item.Product.actors}}
+                            <br>
+                            desc:  {{cart_item.Product.description}}
+                            <br>
+                        </td>
+
+                        <td>
+                                &nbsp;<a href="{% url 'saved_items:full_remove' cart_item.Product.id %}" class="custom_a"><i class="fa-solid fa-trash"></i></a>
+
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+
+
+                </table>
+            </div>
+
+
+               {% endif %}
+
+
+
+{% endblock %}

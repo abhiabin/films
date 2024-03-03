@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+      filmsss.....
+{% endblock %}
+
+{% block content %}
+<div class="row my_prod_row_class">
+    <div class="mx-auto">
+        <p><a href="{{film.category.get_url}}">{{film.category}}</a>|{{film.name}}</p>
+    </div>
+
+<div class="container">
+ <br>
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+        <div style="min-width:18rem">
+            <img src="{{film.image.url}}" alt="{{film.name}}" width="300px" height="200px">
+        </div>
+    </div>
+
+
+    <div class="col-12 col-sm-12 col-lg-6">
+        <div>
+        <h1 class="my_prod_title">{{film.name}}</h1>
+        <p>Actors:{{film.actors}}</p>
+        <p class="my_title1">Film Description:</p>
+        <p class="text-justify my_prod_text">{{film.description}}</p><br>
+        <a class="btn btn-secondary"  href="{% url 'saved_items:add_cart' film.id %}">Add to Savelist</a>
+        <a class="btn btn-danger"  href="{% url 'addapp:delete' film.id %}">delete</a>
+
+
+
+
+    </div><br>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

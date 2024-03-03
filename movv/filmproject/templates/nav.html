@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'filmapp:allfilmCat' %}">Home</a>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'filmapp:categories' %}">Categories</a>
+          <li class="nav-item">
+          <a class="nav-link" href="{% url 'addapp:add_film' %}">Add</a>
+
+           <li class="nav-item">
+        <a class="nav-link"  href="{% url 'filmapp:post_detail' %}">Comments</a>
+
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+        <a class="nav-link" href=""> Hai {{user.username}}</a>
+        {% endif %}
+             <li class="nav-item">
+        <a class="nav-link" href="{% url 'credentials:logout' %}">Logout</a>
+        </li>
+        {% if item_count > 0 %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'saved_items:cart_detail' %}"><i class="fa-solid fa-heart"></i>({{item_count}})</a>
+        </li>
+        {% endif %}
+      </ul>
+      <form class="d-flex" action="{% url 'searchapp:searchResult' %}" method="get">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search" name="q" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
+    </div>
+
+  </div>
+</nav>

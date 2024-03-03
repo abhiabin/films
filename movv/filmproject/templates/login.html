@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="login" method="post">
+  {% csrf_token %}
+    <div class="card" style="width: 18rem; margin: 0 auto;">
+  <div class="card-body">
+    <h5 class="card-title">Login</h5>
+    <input class="card-text" type="text" name="username" placeholder="Enter your username"><br>
+    <p><input class="card-text" type="text" name="password" placeholder="Enter your password"></p>
+    <p><input class="btn btn-primary" type="submit" name="" value="login"></p>
+
+  </div>
+</div>
+
+
+</form>
+</body>
+</html>

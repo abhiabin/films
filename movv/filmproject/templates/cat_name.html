@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+ categories...
+{% endblock %}
+{% block content %}
+ {% for cat in categories %}
+<a class="" href="{{cat.get_url}}"><h5><i>***{{cat.name}}</i></h5></a>
+{% endfor %}
+{% endblock %}

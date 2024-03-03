@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+      film....
+{% endblock %}
+
+{% block content %}
+{% if category %}
+      <div class="row my_row_class">
+          <div class="mx-auto">
+          <p><a href="{% url 'filmapp:allfilmCat' %}">Our Movie collections</a> </p>
+      </div>
+  </div>
+
+{% endif %}
+<div class="mx-auto">
+    {% if category %}
+
+<br>
+<div>
+    <h1 class="text-center my_title">{{category.name}}</h1>
+</div>
+    {% else %}
+<br>
+
+<div>
+    <h1 class="text-center my_title">Movie collections</h1>
+    <p class="text-justify">Our movie collections are the world's best collection which are portraying at its best to the users
+    worldwide .Finest quality are the key factor of maintaining the service till the present moment,users
+    satisfaction put us ahead in the field of updating various film collections. </p>
+</div>
+     {% endif %}
+<div class="container">
+    <div class="row mx-auto">
+        {% for film in films %}
+        <div class="my_bottom_margin col-9 col-sm-12 col-md-4 xol-lg-4">
+            <div class="card text-center" style="min-width:18rem;">
+                        <div class="card-body">
+
+                    <h4>{{film.name}}</h4>
+                    <a href="{{film.get_url}}"><img src="{{film.image.url}}" alt="{{film.name}}" width="200" height="300"></a>
+
+                </div>
+            </div><br>
+        </div>
+
+
+        {% endfor %}
+{% endblock %}
